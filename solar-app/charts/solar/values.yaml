@@ -1,7 +1,7 @@
 rollout:
   enabled: true    
 backend:
-  replicaCount: 3
+  replicaCount: 1
   image:
     repository: himeshp/lunar-app
     tag: v1
@@ -20,10 +20,10 @@ backend:
       memory: 128Mi  
 
 frontend:
-  replicaCount: 3
+  replicaCount: 1
   image:
     repository: himeshp/react-app
-    tag: v1
+    tag: latest
     pullPolicy: Always
   service:
     type: NodePort
