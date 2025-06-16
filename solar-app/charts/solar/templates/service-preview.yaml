@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: solar-app
-    rollout.argoproj.io/bluegreen: preview
   ports:
   - port: {{ .Values.backend.service.port }}
     targetPort: {{ .Values.backend.service.targetPort }}
