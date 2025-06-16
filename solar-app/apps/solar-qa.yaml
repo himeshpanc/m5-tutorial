@@ -1,17 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apollo-qa
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.slack.slack: hp-slack-ak-test 
-    notifications.argoproj.io/subscribe.on-deployed.github: ""
+  name: solar-qa
 spec:
   destination:
     name: himesh-corp-mac
     namespace: qa
   source:
-    path: apollo-app/charts/apollo
-    repoURL: https://github.com/himeshpanc/rocket-apps.git
+    path: solar-app/charts/solar
+    repoURL: https://github.com/himeshpanc/m5-tutorial.git
     targetRevision: HEAD
     helm:
       valueFiles:
@@ -19,7 +16,7 @@ spec:
   project: default
   syncPolicy:
     automated:
-      prune: true
+      prune: true 
       selfHeal: true
     syncOptions:
       - CreateNamespace=true

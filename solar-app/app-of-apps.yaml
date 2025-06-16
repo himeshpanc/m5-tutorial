@@ -1,16 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apollo-app-of-apps
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: hp-slack-ak-test
-    notifications.argoproj.io/subscribe.on-deployed.github: ""
+  name: solar-app-of-apps
 spec:
   destination:
     name: himesh-corp-mac
     namespace: argocd
   source:
-    path: apollo-app/apps
+    path: solar-app/apps
     repoURL: https://github.com/himeshpanc/m5-tutorial.git
     targetRevision: HEAD
   project: default
