@@ -1,6 +1,6 @@
 apiVersion: v2
-name: apollo
-description: A Helm chart for Apollo App
+name: solar
+description: A Helm chart for Solar App
 type: application
 version: 0.1.0
 appVersion: "1.0"
