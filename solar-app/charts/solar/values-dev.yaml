@@ -3,17 +3,17 @@ backend:
   resources:
     limits:
       cpu: 500m
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 200m
-      memory: 128Mi
+      memory: 64Mi
 
 frontend:
   replicaCount: 2
   resources:
     limits:
       cpu: 500m
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 200m
-      memory: 128Mi
+      memory: 64Mi
