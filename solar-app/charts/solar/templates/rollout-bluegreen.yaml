@@ -24,8 +24,4 @@ spec:
       previewService: solar-app-preview
       autoPromotionEnabled: false
       previewReplicaCount: {{ .Values.backend.replicaCount }}
-      podTemplateLabels:            # tell Rollouts which pods are preview
-        rollout.argoproj.io/bluegreen: preview
-      stablePodTemplateLabels:      # and which are stable
-        rollout.argoproj.io/bluegreen: stable
 {{- end }}
