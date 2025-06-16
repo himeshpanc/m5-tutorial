@@ -1,3 +1,5 @@
+rollout:
+  enabled: true    
 backend:
   replicaCount: 1
   image:
@@ -15,7 +17,7 @@ backend:
       memory: 256Mi
     requests:
       cpu: 100m
-      memory: 128Mi
+      memory: 128Mi  
 
 frontend:
   replicaCount: 1

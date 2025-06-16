@@ -1,0 +1,31 @@
+{{- if .Values.rollout.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: solar-app
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  selector:
+    matchLabels: { app: solar-app }
+  template:
+    metadata:
+      labels:
+        app: solar-app
+        rollout.argoproj.io/bluegreen: preview       # ← preview label
+    spec:
+      containers:
+      - name: solar-app
+        image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+        imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+        ports: [{ containerPort: {{ .Values.backend.service.targetPort }} }]
+        resources: {{- toYaml .Values.backend.resources | nindent 10 }}
+  strategy:
+    blueGreen:
+      activeService:  solar-app-active
+      previewService: solar-app-preview
+      autoPromotionEnabled: false
+      podTemplateLabels:            # tell Rollouts which pods are preview
+        rollout.argoproj.io/bluegreen: preview
+      stablePodTemplateLabels:      # and which are stable
+        rollout.argoproj.io/bluegreen: stable
+{{- end }}
