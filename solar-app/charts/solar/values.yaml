@@ -14,8 +14,27 @@ backend:
     nodePort: 30000
   resources:
     limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi  
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: nginx                    # lightweight static server
+    tag: 1.25-alpine
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 80            # nginx listens on 80
+    targetPort: 80
+    nodePort: 30001
+  resources:
+    limits:
       cpu: 200m
       memory: 128Mi
     requests:
       cpu: 50m
-      memory: 32Mi
+      memory: 64Mi

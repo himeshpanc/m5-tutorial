@@ -7,3 +7,13 @@ backend:
     requests:
       cpu: 200m
       memory: 64Mi
+
+frontend:
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 500m
+      memory: 128Mi
+    requests:
+      cpu: 200m
+      memory: 64Mi
