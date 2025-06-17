@@ -4,7 +4,7 @@ metadata:
   name: solar-dev
 spec:
   destination:
-    name: himesh-corp-mac
+    server: https://kubernetes.default.svc
     namespace: dev
   source:
     path: solar-app/charts/solar
