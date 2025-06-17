@@ -4,12 +4,12 @@ metadata:
   name: solar-qa
 spec:
   destination:
-    name: himesh-corp-mac
+    server: https://kubernetes.default.svc
     namespace: qa
   source:
     path: solar-app/charts/solar
     repoURL: https://github.com/himeshpanc/m5-tutorial.git
-    targetRevision: HEAD
+    targetRevision: gh
     helm:
       valueFiles:
       - values-qa.yaml
