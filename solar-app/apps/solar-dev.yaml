@@ -4,7 +4,7 @@ metadata:
   name: solar-dev
 spec:
   destination:
-    server: https://kubernetes.default.svc
+    name: gh-codespaces-demo
     namespace: dev
   source:
     path: solar-app/charts/solar
