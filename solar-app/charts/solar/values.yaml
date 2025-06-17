@@ -1,15 +1,16 @@
 rollout:
   enabled: true    
+
 backend:
   replicaCount: 1
   image:
-    repository: himeshp/lunar-app
-    tag: v1
-    pullPolicy: Always
+    repository: argoproj/rollouts-demo   # <— official demo image
+    tag: blue                            # blue|green|yellow|orange
+    pullPolicy: IfNotPresent
   service:
     type: NodePort
-    port: 3000
-    targetPort: 3000
+    port: 8080          # rollouts-demo listens on 8080
+    targetPort: 8080
     nodePort: 30000
   resources:
     limits:
@@ -22,13 +23,13 @@ backend:
 frontend:
   replicaCount: 1
   image:
-    repository: himeshp/react-app
-    tag: latest
-    pullPolicy: Always
+    repository: nginx                    # lightweight static server
+    tag: 1.25-alpine
+    pullPolicy: IfNotPresent
   service:
     type: NodePort
-    port: 3003
-    targetPort: 3003
+    port: 80            # nginx listens on 80
+    targetPort: 80
     nodePort: 30001
   resources:
     limits:
