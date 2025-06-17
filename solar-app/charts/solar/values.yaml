@@ -5,7 +5,7 @@ backend:
   replicaCount: 1
   image:
     repository: argoproj/rollouts-demo   # <— official demo image
-    tag: yellow                            # blue|green|yellow|orange
+    tag: orange                            # blue|green|yellow|orange
     pullPolicy: IfNotPresent
   service:
     type: NodePort
