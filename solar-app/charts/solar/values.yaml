@@ -4,7 +4,7 @@ backend:
   replicaCount: 1
   image:
     repository: himeshp/lunar-app
-    tag: v1
+    tag: v2
     pullPolicy: Always
   service:
     type: NodePort
