@@ -3,30 +3,30 @@ kind: Rollout
 metadata:
   name: rollouts-demo
 spec:
-  replicas: 5
+  replicas: 5 #Number of replicas to maintain
   strategy:
     canary:
       steps:
-      - setWeight: 20
-      - pause: {}
+      - setWeight: 20 #Set the weight of the canary to 20%
+      - pause: {} #Pause the rollout
       - setWeight: 40
       - pause: {duration: 10}
       - setWeight: 60
       - pause: {duration: 10}
       - setWeight: 80
       - pause: {duration: 10}
-  revisionHistoryLimit: 2
+  revisionHistoryLimit: 2 #Number of previous rollouts to keep
   selector:
     matchLabels:
-      app: rollouts-demo
+      app: rollouts-demo #in the Rollout tells Kubernetes. Hey, manage all pods that have these labels.
   template:
     metadata:
       labels:
-        app: rollouts-demo
+        app: rollouts-demo #Must match the selector's matchLabels
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:orange
+        image: argoproj/rollouts-demo:yellow #Pod template for creating new pods
         ports:
         - name: http
           containerPort: 8080

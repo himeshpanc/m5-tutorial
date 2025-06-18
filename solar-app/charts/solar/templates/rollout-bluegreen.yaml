@@ -1,16 +1,16 @@
-{{- if .Values.rollout.enabled }}
+{{- if .Values.rollout.enabled }} # Only create this resource if rollout is enabled in values
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: solar-app
+  name: solar-app # Name of the Rollout resource
 spec:
   replicas: {{ .Values.backend.replicaCount }}
   selector:
-    matchLabels: { app: solar-app }
-  template:
+    matchLabels: { app: solar-app } # Labels to identify which pods to manage
+  template: # Pod template for creating new pods
     metadata:
       labels:
-        app: solar-app
+        app: solar-app # Must match the selector's matchLabels
     spec:
       containers:
       - name: solar-app
